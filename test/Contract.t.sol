@@ -6,6 +6,7 @@ import "../src/Contract.sol";
 
 contract ContractTest is Test {
     Contract public myContract;
+
     function setUp() public {
         myContract = new Contract();
     }
@@ -16,5 +17,10 @@ contract ContractTest is Test {
 
     function testHello() public {
         assertEq(myContract.hello(), "Hello, Foundry!");
+    }
+
+    function testSetNumber() public {
+        myContract.setNumber(43);
+        assertEq(myContract.number(), 43);
     }
 }
